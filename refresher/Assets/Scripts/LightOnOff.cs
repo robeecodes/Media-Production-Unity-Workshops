@@ -1,15 +1,16 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LightOnOff : MonoBehaviour
 {
-    private GameObject _light;
-
     private void Start() {
-        _light = gameObject;
-        Debug.Log(_light);
+        int on = Random.Range(0, 10);
+
+        gameObject.SetActive(on <= 5);
     }
-    
+
     public void Flicker() {
-        _light.SetActive(!_light.activeSelf);
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 }

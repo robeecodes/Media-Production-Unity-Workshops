@@ -11,17 +11,17 @@ public class CreateBall : MonoBehaviour
     {
         int balls = Random.Range(5, 20);
         Bounds groundBounds = ground.GetComponent<Collider>().bounds;
-        int ballDiameter = (int)Math.Ceiling(ballPrefab.GetComponent<Collider>().bounds.extents.y) * 2;
+        int ballRadius = (int)Math.Ceiling(ballPrefab.GetComponent<Collider>().bounds.extents.y);
 
         for (int i = 0; i < balls; i++) {
-            SpawnBall(groundBounds, ballDiameter);
+            SpawnBall(groundBounds, ballRadius);
         }
     }
 
-    private void SpawnBall(Bounds groundBounds, int ballDiameter) {
+    private void SpawnBall(Bounds groundBounds, int ballRadius) {
         int x = Random.Range((int)groundBounds.min.x, (int)groundBounds.max.x);
         int z = Random.Range((int)groundBounds.min.z, (int)groundBounds.max.z);
-        int y = Random.Range((int)ground.transform.position.y + ballDiameter + 1, (int)ground.transform.position.y + 20 + ballDiameter);
+        int y = Random.Range((int)ground.transform.position.y + ballRadius, (int)ground.transform.position.y + 20 + ballRadius);
         
         GameObject ball = Instantiate(ballPrefab, new Vector3(x, y, z), Quaternion.identity);
         Renderer renderer = ball.GetComponent<Renderer>();
