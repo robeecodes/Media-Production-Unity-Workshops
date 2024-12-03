@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,7 +9,7 @@ public class LightOnOff : MonoBehaviour
         _light = gameObject.GetComponent<Light>();
         int on = Random.Range(0, 10);
 
-        _light.enabled = on > 5 ? true : false;
+        _light.enabled = on < 5;
     }
 
     public void Flicker() {
